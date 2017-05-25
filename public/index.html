@@ -1,0 +1,55 @@
+<html ng-app="app" ng-controller="mainCtrl">
+
+<head>
+    <meta charset="utf-8">
+    <title>Roulette</title>
+    <meta name="author" content="Mohamed Mostafa">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
+    <script src="js/controllers/mainCtrl.js"></script>
+    <!--bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+    <h2 class="text-center" >Round: {{round}}</h2>
+    </div>
+    <div class="col-md-6 col-md-offset-4">
+    <div class="container"><span style="color:red" ng-repeat="err in errMsgs track by $index">{{err}} </br></span></div>
+    <div class="container"><span style="color:red" >{{serverErrorMsg}}</span></div>
+    </div>
+    <div class="col-md-6 col-md-offset-4">
+        <h3>Bet</h3>
+        <label for="betRound">Round :</label>
+        <input name="betRound" id="betRound" type="text" ng-model="bet.round" ng-change="isBetValid()" />
+        <label for="betNumber">Number :</label>
+        <input name="betNumber" id="betNumber" type="text" ng-model="bet.number" ng-change="isBetValid()"/>
+        <label for="betAmount">Amount :</label>
+        <input name="betAmount" id="betAmount" type="text" ng-model="bet.amount" ng-change="isBetValid()"/>
+        <button name="betButton" id="betButton" ng-click="initBet()">Bet</button>
+    </div>
+    <div class="col-md-7 col-md-offset-3">
+    <button ng-click="listBets()" >listBets</button>
+    <button ng-click="getBalance()">GetBalance</button>
+    <div ng-if="balance">Balance: {{balance}}</div>
+    <div class="table-responsive">
+        <table class="table text-center table-hover table-striped" ng-if="tableData">
+        <thead><th class=" text-center" ng-repeat="value in tableKeys">{{value}}</th></thead>
+        <tbody><tr ng-repeat="row in tableData track by $index">{{row}}<td ng-repeat="val in tableValues(row) track by $index">{{val}}</td></tr></tbody>
+        </table>
+        </div>
+    </div>
+</body>
+
+</html>

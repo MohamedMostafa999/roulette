@@ -1,0 +1,20 @@
+{
+  "name": "roulette",
+  "version": "1.0.0",
+  "description": "test app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohamed Mostafa",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
+    "config": "^1.26.1",
+    "express": "^4.15.3",
+    "express-ws": "^3.0.0",
+    "mongoose": "^4.10.2",
+    "underscore": "^1.8.3"
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "Game":{
+        "Min":0,
+        "Max":36,
+        "RoundInterval": 30000
+    },
+    "Server":{
+       "Port":3000,
+       "ApiPort":8080
+    },
+    "DB":{
+        "uri":"mongodb://localhost/roulette"
+    }
+}
